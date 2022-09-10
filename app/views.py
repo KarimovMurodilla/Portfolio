@@ -10,11 +10,12 @@ class PortfolioView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['contact'] = Contact.objects.all()
+        context['contact'] = Contact.objects.filter(id=1).all().first()
         context['career'] = Career.objects.all()
         context['education'] = Education.objects.all()
         context['prog_skills'] = ProgrammingSkills.objects.all()
-        context['skills'] = Skills.objects.all()
+        context['skills'] = Skills.objects.filter(id=1).values("description").first()['description']
+        context['creations'] = None
         context['feedbacks'] = Feedbacks.objects.all()
 
         return context

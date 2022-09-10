@@ -24,7 +24,7 @@ class Contact(models.Model):
     gmail = models.CharField("Gmail", max_length=50)
 
     def __str__(self):
-        return self.my_name
+        return str(self.my_name)
         
     class Meta:
         verbose_name = "Contact"
@@ -33,8 +33,8 @@ class Contact(models.Model):
 class Career(models.Model):
     title = models.CharField("Title", max_length=150)
     role = models.CharField('Role', max_length=50)
-    start = models.DateField("Starts From Date", default=date.today)
-    end = models.DateField("Finish date", default=date.today)
+    start = models.DateField("Starts From Date")
+    end = models.DateField("Finish date")
     description = models.TextField("Description")
 
     def __str__(self):
@@ -66,7 +66,7 @@ class ProgrammingSkills(models.Model):
         help_text="set your level")
 
     def __str__(self):
-        return str(self.level)
+        return str(self.title)
 
     class Meta:
         verbose_name = "ProgSkill"
@@ -78,7 +78,7 @@ class Skills(models.Model):
     my_skills = models.ManyToManyField(ProgrammingSkills, verbose_name="skills", related_name="my_skills")
 
     def __str__(self):
-        return str(self.my_skills)
+        return str(self.description)
     
     class Meta:
         verbose_name = "Skill"
