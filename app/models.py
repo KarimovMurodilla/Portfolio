@@ -30,6 +30,7 @@ class Contact(models.Model):
         verbose_name = "Contact"
         verbose_name_plural = "Contacts"  
 
+
 class Career(models.Model):
     title = models.CharField("Title", max_length=150)
     role = models.CharField('Role', max_length=50)
