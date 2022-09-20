@@ -1,12 +1,24 @@
+from django import forms
 from django.contrib import admin
 
-from .models import About, Contact, Career, Education, ProgrammingSkills, Skills, Feedbacks
+from .models import About, Contact, Career, Education, ProgrammingSkills, Skills, Feedbacks, Works
+
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+class WorksAdminForm(forms.ModelForm):
+    """Форма с виджетом ckeditor"""
+    description = forms.CharField(label="Description", widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = Works
+        fields = '__all__'
 
 
 @admin.register(About)
 class AboutAdmin(admin.ModelAdmin):
     """Admin side of About section"""
     list_display = ("my_name", "excerpt", "description")
+
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -18,25 +30,12 @@ class ContactAdmin(admin.ModelAdmin):
 class CareerAdmin(admin.ModelAdmin):
     """Admin side of About section"""
     list_display = ("title", "role", "description")
-    # save_as = True
-
-
-    # fieldsets = (
-    #     (None, {
-    #         "fields": (("start", "end"),)
-    #     }),
-    # )
 
 
 @admin.register(Education)
 class EducationAdmin(admin.ModelAdmin):
     """Admin side of About section"""
     list_display = ("title", "role", "description")
-    # fieldsets = (
-    #     (None, {
-    #         "fields": (("start", "end"),)
-    #     }),
-    # )
 
 
 @admin.register(ProgrammingSkills)
@@ -49,21 +48,17 @@ class ProgrammingSkillsAdmin(admin.ModelAdmin):
 @admin.register(Skills)
 class SkillsAdmin(admin.ModelAdmin):
     """Admin side of About section"""
-    list_display = ("description",)
-    
-    # fieldsets = (
-    #     ("MySkills", {
-    #         "classes": ("collapse",),
-    #         "fields": (("my_skills", "description"),)
-    #     }),
-    # )        
+    list_display = ("description",)       
+
+
+@admin.register(Works)
+class WorksAdmin(admin.ModelAdmin):
+    """Admin side of About section"""
+    list_display = ("title", "description", "image",)
+    form = WorksAdminForm
 
 
 @admin.register(Feedbacks)
 class FeedbacksAdmin(admin.ModelAdmin):
     """Admin side of About section"""
     list_display = ("image", "name", "role", "description")
-
-
-# admin.site.register(Skills)
-

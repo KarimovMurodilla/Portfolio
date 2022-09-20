@@ -86,6 +86,19 @@ class Skills(models.Model):
         verbose_name_plural = "Skills"
 
 
+class Works(models.Model):
+    title = models.CharField("Title", max_length=100)
+    description = models.TextField("description")
+    image = models.ImageField("Image", upload_to="works")
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Work"
+        verbose_name_plural = "Works"
+
+
 class Feedbacks(models.Model):
     image = models.ImageField("Client Images", upload_to="clients")
     name = models.CharField("Name", max_length=50)

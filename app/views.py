@@ -15,7 +15,7 @@ class PortfolioView(ListView):
         context['education'] = Education.objects.all()
         context['prog_skills'] = ProgrammingSkills.objects.all()
         context['skills'] = Skills.objects.filter(id=1).values("description").first()['description']
-        context['creations'] = None
+        context['works'] = Works.objects.all()
         context['feedbacks'] = Feedbacks.objects.all()
 
         return context
