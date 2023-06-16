@@ -3252,7 +3252,6 @@ input[type="button"].btn--primary:focus {
     font-size: 1.3rem;
     text-transform: uppercase;
     letter-spacing: .4rem;
-    background-color: var(--color-2);
     color: white;
     width: var(--header-height);
     height: var(--header-height);
