@@ -1,5 +1,3 @@
-from datetime import date
-from xml.dom.minicompat import defproperty
 from django.db import models
 
 
