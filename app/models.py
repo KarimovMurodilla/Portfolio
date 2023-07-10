@@ -94,21 +94,22 @@ class Works(models.Model):
     
     class Meta:
         verbose_name = "Work"
-        verbose_name_plural = "Works"
+        verbose_name_plural = "Works"       
 
 
-class Feedbacks(models.Model):
-    image = models.ImageField("Client Images", upload_to="clients")
-    name = models.CharField("Name", max_length=50)
-    role = models.CharField("Role", max_length=50)
-    description = models.TextField("Description")
-    
+class Testimonial(models.Model):
+    name = models.CharField(max_length=150)
+    lastname = models.CharField(max_length=150)
+    job_title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='testimonials/')
+    description = models.TextField(max_length=500)
+
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = "Feedback"
-        verbose_name_plural = "Feedbacks"       
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonials"  
 
 
 # class SayHello(models.Model):

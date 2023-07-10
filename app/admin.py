@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 
-from .models import About, Contact, Career, Education, ProgrammingSkills, Skills, Feedbacks, Works
+from .models import About, Contact, Career, Education, ProgrammingSkills, Skills, Testimonial, Works
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -58,7 +58,7 @@ class WorksAdmin(admin.ModelAdmin):
     form = WorksAdminForm
 
 
-@admin.register(Feedbacks)
-class FeedbacksAdmin(admin.ModelAdmin):
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
     """Admin side of About section"""
-    list_display = ("image", "name", "role", "description")
+    list_display = ("name", "lastname", "job_title", "image", "description")
